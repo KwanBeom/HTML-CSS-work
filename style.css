@@ -27,6 +27,7 @@ img{
 	height: auto;
 }
 button{
+	background: none;
 	border: 0;
 	padding: 0;
 	font-family: inherit;
@@ -86,7 +87,7 @@ button{
 	transform: translateY(1px);
 }
 
-.soldout{
+/* .soldout{
 	background-color: #fc5562;
 	display: inline-block;
 	height: 60px;
@@ -114,11 +115,11 @@ button{
 	left: 0;
 	transform: skewy(45deg);
 }
-
 .soldout:after {
 	right: 0;
 	transform: skewy(-45deg);
-}
+} */
+
 .content.row{
 	display: flex;
 	gap: 24px;
@@ -127,6 +128,55 @@ button{
 	flex-direction: column;
 	z-index: 1;
 	position: relative;
+	flex-basis: calc(100% / 3);
+}
+.tech{
+	padding: 5px;
+	background-color: #f1e0f8;
+	font-size: 12px;
+	color: #673399;
+	border-radius: 3px;
+	font-weight: 700;
+}
+.content.row .card-content{
+	padding-bottom: 0;
+}
+
+.inner-flex-wrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.content.row .card-content-title{
+	margin-top: 24px;
+	margin-bottom: 32px;
+	font-size: 24px;
+	font-weight: 700;
+	flex-basis: 58px;
+	min-height: 0;
+}
+.content.row .card-content-text{
+	color: #888;
+	font-size: 14px;
+	margin-bottom: 24px;
+}
+
+.join{
+	height: 68px;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: initial;
+}
+
+.people img{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-left: -15px;
+	border: 3px solid #fff;
 }
 /* // pink section */
 
