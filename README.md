@@ -1,1 +1,1 @@
-# HTML/CSS 특강 challenges create
+# HTML/CSS 특강 challenges
