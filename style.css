@@ -5,7 +5,9 @@
 	font-weight: 700;
 	*/
 }
-
+html{
+	overflow: overlay;
+}
 body{
 	margin: 0;
 }
@@ -31,6 +33,7 @@ button{
 	border: 0;
 	padding: 0;
 	font-family: inherit;
+	cursor: pointer;
 }
 
 /* 공통 layout */
@@ -58,6 +61,18 @@ button{
 	padding: 24px;
 	flex: 1 1 auto;
 }
+::-webkit-scrollbar {
+    width: 1vw;
+}
+::-webkit-scrollbar-thumb:hover{
+	background-color: #888;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #ccc;
+    border-radius: 10px;
+}
+
+
 
 /* pink section */
 .section.bg-pink{
@@ -67,7 +82,6 @@ button{
 	justify-content: space-between;
 }
 .bg-pink .title{
-	flex: 0 0 344px;
 	max-width: 344px;
 	color: salmon;
 }
@@ -87,39 +101,6 @@ button{
 	transform: translateY(1px);
 }
 
-/* .soldout{
-	background-color: #fc5562;
-	display: inline-block;
-	height: 60px;
-	padding: 0 15px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-align: center;
-	width: 100%;
-	transform: rotate(-45deg) translateX(-50%);
-}
-.soldout:before,
-.soldout:after {
-	background-color: inherit;
-	content: '';
-	display: block;
-	height: 100%;
-	position: absolute;
-	top: calc(15px/2);
-	width: 15px;
-	filter: brightness(.5);
-	z-index: -1;
-}
-.soldout:before {
-	left: 0;
-	transform: skewy(45deg);
-}
-.soldout:after {
-	right: 0;
-	transform: skewy(-45deg);
-} */
-
 .content.row{
 	display: flex;
 	gap: 24px;
@@ -129,6 +110,7 @@ button{
 	z-index: 1;
 	position: relative;
 	flex-basis: calc(100% / 3);
+	box-shadow: 2px 2px 8px #ddd;
 }
 .tech{
 	padding: 5px;
@@ -139,13 +121,17 @@ button{
 	font-weight: 700;
 }
 .content.row .card-content{
+	display: flex;
+	flex-direction: column;
 	padding-bottom: 0;
+	flex-grow: 1;
 }
 
-.inner-flex-wrap{
+.inner-wrap{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	flex-grow: 1;
 }
 .content.row .card-content-title{
 	margin-top: 24px;
@@ -154,22 +140,57 @@ button{
 	font-weight: 700;
 	flex-basis: 58px;
 	min-height: 0;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .content.row .card-content-text{
 	color: #888;
 	font-size: 14px;
 	margin-bottom: 24px;
+	flex-grow: 1;
 }
 
 .join{
+	font-size: 12px;
+	color: #888;
 	height: 68px;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: initial;
+	border-top: 3px solid #eeeeee;
+	margin-right: -24px;
+	padding-right: 24px;
 }
-
+.plus{
+	color: inherit;
+}
+.plus::before{
+	content: '+ ';
+}
+/* sold out시 효과 */
+.soldout-img{
+	position: absolute;
+	top: -10px;
+	left: -10px;
+}
+.soldout-img, 
+.soldout-text,
+.card.soldout .join .plus,
+.card.soldout .join .people{
+	display: none;
+}
+.card.soldout .soldout-img,
+.card.soldout .soldout-text{
+	display: block;
+}
+.soldout-text{
+	font-size: inherit;
+}
 .people img{
 	width: 30px;
 	height: 30px;
@@ -178,6 +199,7 @@ button{
 	margin-left: -15px;
 	border: 3px solid #fff;
 }
+
 /* // pink section */
 
 /* purple section */
@@ -260,6 +282,8 @@ button{
 /* list */
 .card-content-list{
 	font-size: 14px;
+}
+.card-content-list li{
 	text-indent: -20px;
 	margin: -10px 0 0 20px;
 }
@@ -327,6 +351,11 @@ button{
 	}
 	.content.col .card:nth-child(3){
 		background: url('./images/photo03.png') 0 0 / cover;
+	}
+	/* // purple section media query */
+	/* pink section media query */
+	.content.row{
+		flex-direction: column;
 	}
 }
 
